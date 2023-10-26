@@ -50,8 +50,8 @@
                     "type": "git",
                     "disable-shallow-clone": true,
                     "url": "https://github.com/jatinchowdhury18/AnalogTapeModel.git",
-                    "tag": "v2.11.1",
-                    "commit": "1c173a57a72351abb3bf6e1f55079679ef9c35db",
+                    "tag": "v2.11.3",
+                    "commit": "6107e95d43a736a3e575bf5040bcddd139526ae2",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
