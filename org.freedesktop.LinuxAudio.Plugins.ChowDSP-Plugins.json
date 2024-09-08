@@ -239,7 +239,7 @@
             "name": "ChowDSP-Plugins",
             "buildsystem": "simple",
             "build-commands": [
-                "install -Dm644 ./org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo ",
+                "install -Dm644 ./org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo "
             ],
             "sources": [
                 {
