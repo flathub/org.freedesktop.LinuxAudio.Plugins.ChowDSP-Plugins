@@ -1,11 +1,10 @@
 {
     "id": "org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins",
-    "branch": "23.08",
+    "branch": "24.08",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
     "runtime-version": "stable",
-    "sdk": "org.freedesktop.Sdk//23.08",
+    "sdk": "org.freedesktop.Sdk//24.08",
     "build-extension": true,
-    "appstream-compose": false,
     "build-options": {
         "prepend-pkg-config-path": "/app/extensions/Plugins/ChowDSP-Plugins/lib/pkgconfig",
         "prefix": "/app/extensions/Plugins/ChowDSP-Plugins"
@@ -241,7 +240,6 @@
             "buildsystem": "simple",
             "build-commands": [
                 "install -Dm644 ./org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo ",
-                "appstream-compose --basename=org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins"
             ],
             "sources": [
                 {
