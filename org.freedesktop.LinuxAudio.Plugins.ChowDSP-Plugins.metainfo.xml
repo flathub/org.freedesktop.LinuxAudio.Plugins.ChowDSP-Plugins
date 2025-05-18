@@ -12,12 +12,18 @@
       <li>ChowCentaur 1.4.0 (LV2/VST3)</li>
       <li>ChowKick 1.2.0 (LV2/VST3/CLAP)</li>
       <li>ChowPhaser 1.1.1 (LV2)</li>
+      <li>ChowMultiTool 1.1.0 (LV2/VST3/CLAP)</li>
     </ul>
   </description>
   <url type="homepage">https://chowdsp.com/</url>
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <releases>
+    <release date="2025-05-18" version="2025.05.18">
+      <description>
+        <p>Added ChowMultiTool.</p>
+      </description>
+    </release>
     <release date="2023-11-05" version="2023.11.05" />
     <release date="2023-01-16" version="2023.01.16" />
     <release date="2023-01-13" version="2023.01.13" />
