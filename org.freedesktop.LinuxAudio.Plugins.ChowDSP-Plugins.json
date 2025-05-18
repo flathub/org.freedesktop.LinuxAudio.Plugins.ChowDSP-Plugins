@@ -9,6 +9,9 @@
         "prepend-pkg-config-path": "/app/extensions/Plugins/ChowDSP-Plugins/lib/pkgconfig",
         "prefix": "/app/extensions/Plugins/ChowDSP-Plugins"
     },
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.llvm18"
+    ],
     "cleanup": [
         "/lib/lv2"
     ],
@@ -232,6 +235,50 @@
                     "url": "https://github.com/Chowdhury-DSP/foleys_gui_magic.git",
                     "dest": "modules/foleys_gui_magic",
                     "commit": "9cab1a439d86cbf7942981b24ab59c60a55b7dcd"
+                }
+            ]
+        },
+        {
+            "name": "ChowMultiTool",
+            "buildsystem": "cmake-ninja",
+            "no-make-install": true,
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_AR=/usr/lib/sdk/llvm18/bin/llvm-ar",
+                "-DCMAKE_NM=/usr/lib/sdk/llvm18/bin/llvm-nm",
+                "-DCMAKE_RANLIB=/usr/lib/sdk/llvm18/bin/llvm-ranlib",
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "build-options": {
+                "append-path": "/usr/lib/sdk/llvm18/bin",
+                "append-ld-library-path": "/usr/lib/sdk/llvm18/lib",
+                "cxxflags": "-I/app/extensions/Plugins/ChowDSP-Plugins/include",
+                "env": {
+                    "CXX": "clang++",
+                    "CC": "clang"
+                }
+            },
+            "post-install": [
+                "install -d ${FLATPAK_DEST}/vst3",
+                "cp -R ./ChowMultiTool_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
+                "strip ${FLATPAK_DEST}/vst3/ChowMultiTool*.vst3/Contents/*-linux/*.so",
+                "install -d ${FLATPAK_DEST}/lv2",
+                "cp -R ./ChowMultiTool_artefacts/Release/LV2/*.lv2 ${FLATPAK_DEST}/lv2/",
+                "strip ${FLATPAK_DEST}/lv2/ChowMultiTool*.lv2/*.so",
+                "install -Dm755 ./ChowMultiTool_artefacts/Release/CLAP/*.clap -t ${FLATPAK_DEST}/clap",
+                "strip ${FLATPAK_DEST}/clap/ChowMultiTool.clap",
+                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowMultiTool ../LICENSE"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Chowdhury-DSP/ChowMultiTool.git",
+                    "tag": "v1.1.0",
+                    "commit": "09b831cf2339aca971ff6e7c6a80c329fa89b49f",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 }
             ]
         },
