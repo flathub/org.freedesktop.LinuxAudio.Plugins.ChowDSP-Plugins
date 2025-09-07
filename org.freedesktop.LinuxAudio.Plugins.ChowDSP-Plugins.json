@@ -1,16 +1,16 @@
 {
     "id": "org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins",
-    "branch": "24.08",
+    "branch": "25.08",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
     "runtime-version": "stable",
-    "sdk": "org.freedesktop.Sdk//24.08",
+    "sdk": "org.freedesktop.Sdk//25.08",
     "build-extension": true,
     "build-options": {
         "prepend-pkg-config-path": "/app/extensions/Plugins/ChowDSP-Plugins/lib/pkgconfig",
         "prefix": "/app/extensions/Plugins/ChowDSP-Plugins"
     },
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.llvm18"
+        "org.freedesktop.Sdk.Extension.llvm20"
     ],
     "cleanup": [
         "/lib/lv2"
@@ -23,6 +23,7 @@
             "no-make-install": true,
             "subdir": "Plugin",
             "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                 "-DCMAKE_AR=/usr/bin/gcc-ar",
                 "-DCMAKE_NM=/usr/bin/gcc-nm",
                 "-DCMAKE_RANLIB=/usr/bin/gcc-ranlib",
@@ -152,6 +153,7 @@
             "buildsystem": "cmake-ninja",
             "no-make-install": true,
             "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                 "-DCMAKE_AR=/usr/bin/gcc-ar",
                 "-DCMAKE_NM=/usr/bin/gcc-nm",
                 "-DCMAKE_RANLIB=/usr/bin/gcc-ranlib",
@@ -186,6 +188,16 @@
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
                     }
+                },
+                {
+                    "type": "patch",
+                    "options": [
+                        "-d",
+                        "modules/chowdsp_utils"
+                    ],
+                    "paths": [
+                        "patches/chowdsp_utils-build-fix.patch"
+                    ]
                 }
             ]
         },
@@ -244,15 +256,16 @@
             "no-make-install": true,
             "builddir": true,
             "config-opts": [
-                "-DCMAKE_AR=/usr/lib/sdk/llvm18/bin/llvm-ar",
-                "-DCMAKE_NM=/usr/lib/sdk/llvm18/bin/llvm-nm",
-                "-DCMAKE_RANLIB=/usr/lib/sdk/llvm18/bin/llvm-ranlib",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+                "-DCMAKE_AR=/usr/lib/sdk/llvm20/bin/llvm-ar",
+                "-DCMAKE_NM=/usr/lib/sdk/llvm20/bin/llvm-nm",
+                "-DCMAKE_RANLIB=/usr/lib/sdk/llvm20/bin/llvm-ranlib",
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
             "build-options": {
-                "append-path": "/usr/lib/sdk/llvm18/bin",
-                "append-ld-library-path": "/usr/lib/sdk/llvm18/lib",
-                "cxxflags": "-I/app/extensions/Plugins/ChowDSP-Plugins/include",
+                "append-path": "/usr/lib/sdk/llvm20/bin",
+                "append-ld-library-path": "/usr/lib/sdk/llvm20/lib",
+                "cxxflags": "-I/app/extensions/Plugins/ChowDSP-Plugins/include -std=c++14",
                 "env": {
                     "CXX": "clang++",
                     "CC": "clang"
@@ -279,6 +292,16 @@
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
                     }
+                },
+                {
+                    "type": "patch",
+                    "options": [
+                        "-d",
+                        "modules/chowdsp_utils"
+                    ],
+                    "paths": [
+                        "patches/chowdsp_utils-build-fix.patch"
+                    ]
                 }
             ]
         },

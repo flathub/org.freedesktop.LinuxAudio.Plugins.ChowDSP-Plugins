@@ -1,0 +1,31 @@
+commit cba7f1a8e68c56b61372953e60b5f44794ddd218
+Author: jatin <jatinchowdhury18@gmail.com>
+Date:   Mon Sep 30 13:52:34 2024 -0700
+
+    chowdsp::Rectangle: fix naming error
+
+diff --git a/modules/common/chowdsp_core/DataStructures/chowdsp_GraphicsHelpers.h b/modules/common/chowdsp_core/DataStructures/chowdsp_GraphicsHelpers.h
+index c4518de..6027732 100644
+--- a/modules/common/chowdsp_core/DataStructures/chowdsp_GraphicsHelpers.h
++++ b/modules/common/chowdsp_core/DataStructures/chowdsp_GraphicsHelpers.h
+@@ -357,16 +357,16 @@ struct Rectangle
+     [[nodiscard]] constexpr Rectangle removeFromTop (T amountToRemove) noexcept
+     {
+         const Rectangle r { position.x, position.y, width, juce::jmin (amountToRemove, height) };
+-        position.y += r.h;
+-        height -= r.h;
++        position.y += r.height;
++        height -= r.height;
+         return r;
+     }
+ 
+     [[nodiscard]] constexpr Rectangle removeFromLeft (T amountToRemove) noexcept
+     {
+         const Rectangle r { position.x, position.y, juce::jmin (amountToRemove, width), height };
+-        position.x += r.w;
+-        width -= r.w;
++        position.x += r.width;
++        width -= r.width;
+         return r;
+     }
+ 
