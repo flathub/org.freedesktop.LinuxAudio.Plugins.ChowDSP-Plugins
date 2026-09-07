@@ -1,16 +1,16 @@
 {
     "id": "org.freedesktop.LinuxAudio.Plugins.ChowDSP-Plugins",
-    "branch": "25.08",
+    "branch": "26.08",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
     "runtime-version": "stable",
-    "sdk": "org.freedesktop.Sdk//25.08",
+    "sdk": "org.freedesktop.Sdk//26.08",
     "build-extension": true,
     "build-options": {
         "prepend-pkg-config-path": "/app/extensions/Plugins/ChowDSP-Plugins/lib/pkgconfig",
         "prefix": "/app/extensions/Plugins/ChowDSP-Plugins"
     },
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.llvm20"
+        "org.freedesktop.Sdk.Extension.llvm22"
     ],
     "cleanup": [
         "/lib/lv2"
@@ -45,8 +45,7 @@
                 "cp -R ./CHOWTapeModel_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
                 "strip ${FLATPAK_DEST}/vst3/CHOWTapeModel.vst3/Contents/*-linux/*.so",
                 "install -Dm755 -t ${FLATPAK_DEST}/clap ./CHOWTapeModel_artefacts/Release/CLAP/*.clap",
-                "strip ${FLATPAK_DEST}/clap/CHOWTapeModel.clap",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowTapeModel ../LICENSE"
+                "strip ${FLATPAK_DEST}/clap/CHOWTapeModel.clap"
             ],
             "sources": [
                 {
@@ -93,8 +92,7 @@
                 "strip ${FLATPAK_DEST}/lv2/ChowMatrix.lv2/*.so",
                 "install -d ${FLATPAK_DEST}/vst3",
                 "cp -R ./ChowMatrix_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
-                "strip ${FLATPAK_DEST}/vst3/ChowMatrix.vst3/Contents/*-linux/*.so",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowMatrix LICENSE"
+                "strip ${FLATPAK_DEST}/vst3/ChowMatrix.vst3/Contents/*-linux/*.so"
             ],
             "sources": [
                 {
@@ -132,8 +130,7 @@
                 "strip ${FLATPAK_DEST}/lv2/ChowCentaur.lv2/*.so",
                 "install -d ${FLATPAK_DEST}/vst3",
                 "cp -R ./ChowCentaur/ChowCentaur_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
-                "strip ${FLATPAK_DEST}/vst3/ChowCentaur.vst3/Contents/*-linux/*.so",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowCentaur LICENSE"
+                "strip ${FLATPAK_DEST}/vst3/ChowCentaur.vst3/Contents/*-linux/*.so"
             ],
             "sources": [
                 {
@@ -175,8 +172,7 @@
                 "cp -R ./ChowKick_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
                 "strip ${FLATPAK_DEST}/vst3/ChowKick.vst3/Contents/*-linux/*.so",
                 "install -D ./ChowKick_artefacts/Release/CLAP/ChowKick.clap -t ${FLATPAK_DEST}/clap/",
-                "strip ${FLATPAK_DEST}/clap/ChowKick.clap",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowKick LICENSE"
+                "strip ${FLATPAK_DEST}/clap/ChowKick.clap"
             ],
             "sources": [
                 {
@@ -221,8 +217,7 @@
             "post-install": [
                 "install -d ${FLATPAK_DEST}/vst3",
                 "cp -R ./ChowPhaser*_artefacts/Release/VST3/*.vst3 ${FLATPAK_DEST}/vst3/",
-                "strip ${FLATPAK_DEST}/vst3/ChowPhaser*.vst3/Contents/*-linux/*.so",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowPhaser LICENSE"
+                "strip ${FLATPAK_DEST}/vst3/ChowPhaser*.vst3/Contents/*-linux/*.so"
             ],
             "sources": [
                 {
@@ -257,14 +252,14 @@
             "builddir": true,
             "config-opts": [
                 "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
-                "-DCMAKE_AR=/usr/lib/sdk/llvm20/bin/llvm-ar",
-                "-DCMAKE_NM=/usr/lib/sdk/llvm20/bin/llvm-nm",
-                "-DCMAKE_RANLIB=/usr/lib/sdk/llvm20/bin/llvm-ranlib",
+                "-DCMAKE_AR=/usr/lib/sdk/llvm22/bin/llvm-ar",
+                "-DCMAKE_NM=/usr/lib/sdk/llvm22/bin/llvm-nm",
+                "-DCMAKE_RANLIB=/usr/lib/sdk/llvm22/bin/llvm-ranlib",
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
             "build-options": {
-                "append-path": "/usr/lib/sdk/llvm20/bin",
-                "append-ld-library-path": "/usr/lib/sdk/llvm20/lib",
+                "append-path": "/usr/lib/sdk/llvm22/bin",
+                "append-ld-library-path": "/usr/lib/sdk/llvm22/lib",
                 "cxxflags": "-I/app/extensions/Plugins/ChowDSP-Plugins/include -std=c++14",
                 "env": {
                     "CXX": "clang++",
@@ -279,8 +274,7 @@
                 "cp -R ./ChowMultiTool_artefacts/Release/LV2/*.lv2 ${FLATPAK_DEST}/lv2/",
                 "strip ${FLATPAK_DEST}/lv2/ChowMultiTool*.lv2/*.so",
                 "install -Dm755 ./ChowMultiTool_artefacts/Release/CLAP/*.clap -t ${FLATPAK_DEST}/clap",
-                "strip ${FLATPAK_DEST}/clap/ChowMultiTool.clap",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/ChowMultiTool ../LICENSE"
+                "strip ${FLATPAK_DEST}/clap/ChowMultiTool.clap"
             ],
             "sources": [
                 {
@@ -301,6 +295,16 @@
                     ],
                     "paths": [
                         "patches/chowdsp_utils-build-fix.patch"
+                    ]
+                },
+                {
+                    "type": "patch",
+                    "options": [
+                        "-d",
+                        "modules/JUCE"
+                    ],
+                    "paths": [
+                        "patches/juce-build-fix.patch"
                     ]
                 }
             ]

@@ -1,0 +1,25 @@
+From 44c552c61407bf9dc89cf47f04d3bf45f3d05ea9 Mon Sep 17 00:00:00 2001
+From: reuk <reuk@users.noreply.github.com>
+Date: Mon, 8 Dec 2025 13:26:15 +0000
+Subject: [PATCH] AudioPluginInstance: Use inherited constructors directly
+
+---
+ .../processors/juce_AudioPluginInstance.h                    | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h b/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h
+index 2f70906db433..07d4d9e13db3 100644
+--- a/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h
++++ b/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h
+@@ -167,10 +167,7 @@ class JUCE_API  AudioPluginInstance   : public AudioProcessor
+         const StringArray onStrings, offStrings;
+     };
+ 
+-    AudioPluginInstance() = default;
+-    AudioPluginInstance (const BusesProperties& ioLayouts) : AudioProcessor (ioLayouts) {}
+-    template <size_t numLayouts>
+-    AudioPluginInstance (const short channelLayoutList[numLayouts][2]) : AudioProcessor (channelLayoutList) {}
++    using AudioProcessor::AudioProcessor;
+ 
+ private:
+     // It's not safe to add a plain AudioProcessorParameter to an AudioPluginInstance.
